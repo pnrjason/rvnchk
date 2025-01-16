@@ -9,11 +9,13 @@
             '/checker/charge' => 'views/checker/charge.php',
             '/checker/3ds' => 'views/checker/3ds.php',
             '/checker/bin' => 'views/checker/bin.php',
+            '/api/status' => 'api/status.php',
         ],
         'POST' => [
-            '/checker/auth' => 'controllers/checker/auth.php',
-            '/checker/charge' => 'controllers/checker/charge.php',
-            '/checker/3ds' => 'controllers/checker/3ds.php',
-            '/checker/bin' => 'controllers/checker/bin.php',
+            '/auth/login' => 'controllers/auth/login.php',
+            '/api/v1/auth' => 'api/v1/auth.php',
+            '/api/v1/charge' => 'api/v1/charge.php',
+            '/api/v1/3ds' => 'api/v1/3ds.php',
+            '/api/v1/bin' => 'api/v1/bin.php',
         ],
     ];
