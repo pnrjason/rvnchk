@@ -1,5 +1,5 @@
 <?php
-
+    error_reporting(0);
     require "routes.php";
 
     $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
