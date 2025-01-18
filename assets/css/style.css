@@ -32152,14 +32152,14 @@ dl li {
 
 .content-wrapper {
   background: #15161b;
-  padding: 2.875rem 2.875rem 0 2.875rem;
+  padding: 0 2.875rem 0 2.875rem;
   width: 100%;
   -webkit-flex-grow: 1;
   flex-grow: 1;
 }
 @media (max-width: 991px) {
   .content-wrapper {
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
   }
 }
 
