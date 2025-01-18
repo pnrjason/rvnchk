@@ -32,8 +32,8 @@ Enter one card per line."></textarea>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-center gap-2 mt-3">
-                                        <button type="button" class="btn btn-success btn btn-fw">Start</button>
-                                        <button type="button" class="btn btn-danger btn btn-fw" disabled>Stop</button>
+                                        <button type="button" class="btn btn-success btn btn-fw" id="start">Start</button>
+                                        <button type="button" class="btn btn-danger btn btn-fw" id="stop">Stop</button>
                                     </div>
                                 </div>
                             </div>
@@ -72,27 +72,6 @@ Enter one card per line."></textarea>
     </div>
 </main>
 <script>
-    function copy(textareaId) {
-        const textarea = document.getElementById(textareaId);
-        const value = textarea.value;
-        const tempTextarea = document.createElement('textarea');
-        tempTextarea.value = value;
-        document.body.appendChild(tempTextarea);
-        tempTextarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempTextarea);
-    }
-</script>
-<script>
-    const textareas = document.querySelectorAll("textarea:not(#cards)");
-    textareas.forEach(textarea => {
-        if (!textarea.value.trim()) {
-            textarea.style.display = "none";
-            const button = textarea.nextElementSibling;
-            if (button && button.tagName === "BUTTON") {
-                button.style.display = "none";
-            }
-        }
-    });
+    document.addEventListener('DOMContentLoaded',()=>{const s=document.getElementById('start'),t=document.getElementById('stop'),c=document.getElementById('cards'),a=document.getElementById('approved'),d=document.getElementById('declined'),e=document.getElementById('error'),u=()=>{s.disabled=!c.value.trim(),t.disabled=!0},h=()=>[a,d,e].forEach(x=>{const v=x.value.trim();x.style.display=v?"block":"none";const b=x.nextElementSibling;b&&b.tagName==="BUTTON"&&(b.style.display=v?"block":"none")});c.oninput=u;const copy=i=>{const t=document.createElement("textarea");t.value=document.getElementById(i).value,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)};s.onclick=async()=>{if(c.value.trim()){let l=c.value.trim().split("\n");s.disabled=!0,t.disabled=!1;for(let i=0;i<l.length;i++){if(t.disabled)break;const x=l[i];try{const r=await fetch("/api/v1/charge",{method:"POST",headers:{"Content-Type":"application/json","api-key":"<?php echo 'your-secret-api-key'; ?>"},body:JSON.stringify({data:x})}),v=await r.json();v.status==="ok"?a.value+=(a.value?"\n":"")+x:v.status==="nok"?d.value+=(d.value?"\n":"")+x:e.value+=(e.value?"\n":"")+x}catch{e.value+=(e.value?"\n":"")+x}h(),l.splice(i,1),c.value=l.join("\n"),i--}t.disabled=!0,u()}},t.onclick=()=>{t.disabled=!0,u()},window.copy=copy,u(),h();window.onbeforeunload=()=>{if(c.value.trim()||a.value.trim())return"Changes you made may not be saved."}});
 </script>
 <?php include "views/partials/footer.php"; ?>
