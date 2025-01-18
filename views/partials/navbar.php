@@ -47,32 +47,6 @@
                     </a>
                 </div>
             </li>
-            <li class="nav-item nav-profile dropdown">
-                <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="nav-profile-img">
-                        <img src="<?= $baseURL ?>assets/images/favicon.png" alt="image">
-                    </div>
-                    <div class="nav-profile-text">
-                        <p class="mb-1">test_user</p>
-                    </div>
-                </a>
-                <div class="dropdown-menu navbar-dropdown dropdown-menu-end p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
-                    <div class="p-3 text-center bg-info">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="<?= $baseURL ?>assets/images/favicon.png" alt="">
-                    </div>
-                    <div class="p-2">
-                        <h5 class="dropdown-header text-uppercase ps-2 text-light">User Options</h5>
-                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                            <span>Settings</span>
-                            <i class="mdi mdi-weather-sunny"></i>
-                        </a>
-                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
-                            <span>Log Out</span>
-                            <i class="mdi mdi-logout ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
                     <i class="mdi mdi-bell-outline"></i>
@@ -116,6 +90,32 @@
                             <p class="text-gray ellipsis mb-0"> New admin wow! </p>
                         </div>
                     </a>
+                </div>
+            </li>
+            <li class="nav-item nav-profile dropdown">
+                <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="nav-profile-img">
+                        <img src="<?= $baseURL ?>assets/images/favicon.png" alt="image">
+                    </div>
+                    <div class="nav-profile-text">
+                        <p class="mb-1">test_user</p>
+                    </div>
+                </a>
+                <div class="dropdown-menu navbar-dropdown dropdown-menu-end p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
+                    <div class="p-3 text-center bg-info">
+                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="<?= $baseURL ?>assets/images/favicon.png" alt="">
+                    </div>
+                    <div class="p-2">
+                        <h5 class="dropdown-header text-uppercase ps-2 text-light">User Options</h5>
+                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                            <span>Settings</span>
+                            <i class="mdi mdi-weather-sunny"></i>
+                        </a>
+                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
+                            <span>Log Out</span>
+                            <i class="mdi mdi-logout ms-1"></i>
+                        </a>
+                    </div>
                 </div>
             </li>
         </ul>
