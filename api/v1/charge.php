@@ -44,7 +44,7 @@
                 'country' => 'US',
             ],
         ];
-    } elseif ($input['data'] == '4000000000000000|01|2028|123') {
+    } elseif (str_contains($input['data'], '4000000000000000|01|2028|123')) {
         $response = [
             'status' => 'nok',
             'card' => '4000000000000000|01|2028|123',

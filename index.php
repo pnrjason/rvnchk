@@ -8,7 +8,7 @@
 
     if ($uri === '/') { header("Location: /dashboard"); exit; }
 
-    if (substr($uri, -1) == '/') {
+    if (str_ends_with($uri, '/')) {
         $uri = rtrim($uri, '/');
         header("Location: " . $uri);
         exit;
