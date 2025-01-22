@@ -1,6 +1,6 @@
 RewriteEngine On
 
-ErrorDocument 403 /views/404.php
+ErrorDocument 403 /views/error.php
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

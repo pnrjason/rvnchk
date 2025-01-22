@@ -18,5 +18,5 @@
         require $routes[$method][$uri];
     } else {
         http_response_code(404);
-        require "views/404.php";
+        require "views/error.php";
     }
