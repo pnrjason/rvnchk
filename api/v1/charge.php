@@ -1,8 +1,8 @@
 <?php
 
-    sleep(3);
+    sleep(1);
 
-    if (strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== 0) {
+    if (!str_starts_with($_SERVER['CONTENT_TYPE'], 'application/json')) {
         header('Content-Type: application/json');
         http_response_code(415);
         echo json_encode(['error' => 'Invalid Content-Type. Only application/json is allowed.']);
