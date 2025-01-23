@@ -107,11 +107,11 @@
                     </div>
                     <div class="p-2">
                         <h5 class="dropdown-header text-uppercase ps-2 text-light">User Options</h5>
-                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="/settings">
                             <span>Settings</span>
                             <i class="mdi mdi-weather-sunny"></i>
                         </a>
-                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="#">
+                        <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="/logout">
                             <span>Log Out</span>
                             <i class="mdi mdi-logout ms-1"></i>
                         </a>
