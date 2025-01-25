@@ -5,11 +5,16 @@
     $routes = [
         'GET' => [
             '/dashboard' => 'views/dashboard.php',
+            '/balance' => 'views/balance.php',
+            '/api/status' => 'api/status.php',
             '/checker/auth' => 'views/checker/auth.php',
             '/checker/charge' => 'views/checker/charge.php',
             '/checker/3ds' => 'views/checker/3ds.php',
             '/checker/bin' => 'views/checker/bin.php',
-            '/api/status' => 'api/status.php',
+            '/dev/api' => 'views/dev.php',
+            '/tickets' => 'views/tickets.php',
+            '/settings' => 'views/settings.php',
+            '/logout' => 'views/logout.php',
         ],
         'POST' => [
             '/auth/login' => 'controllers/auth/login.php',
