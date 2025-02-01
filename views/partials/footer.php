@@ -6,5 +6,6 @@
 <script src="<?= $baseURL ?>assets/js/misc.js"></script>
 <script src="<?= $baseURL ?>assets/js/settings.js"></script>
 <script src="<?= $baseURL ?>assets/js/todolist.js"></script>
+<script src="<?= $baseURL ?>assets/js/tooltips.js"></script>
 </body>
 </html>

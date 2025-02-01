@@ -33,8 +33,8 @@
     if ($input['data'] == '4420632000063531|01|2026|123') {
         $response = [
             'status' => 'ok',
-            'card' => '4000000000000000|01|2028|123',
-            'message' => 'Approved',
+            'card' => $input['data'],
+            'message' => 'AP',
             'bin_data' => [
                 'bin' => '400000',
                 'brand' => 'VISA',
@@ -47,8 +47,8 @@
     } elseif (str_contains($input['data'], '4000000000000000|01|2028|123')) {
         $response = [
             'status' => 'nok',
-            'card' => '4000000000000000|01|2028|123',
-            'message' => 'Approved',
+            'card' => $input['data'],
+            'message' => 'CVV Declined',
             'bin_data' => [
                 'bin' => '400000',
                 'brand' => 'VISA',
@@ -61,7 +61,16 @@
     } else {
         $response = [
             'status' => 'error',
-            'message' => 'An unknown error occurred. Please try again later.',
+            'card' => $input['data'],
+            'message' => 'Error',
+            'bin_data' => [
+                'bin' => '400000',
+                'brand' => 'VISA',
+                'category' => 'DEBIT',
+                'level' => 'CLASSIC',
+                'bank' => 'EXAMPLE BANK INC',
+                'country' => 'US',
+            ],
         ];
     }
 

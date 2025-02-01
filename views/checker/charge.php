@@ -40,30 +40,21 @@ Enter one card per line."></textarea>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin">
+            <div class="col-md-5 grid-margin">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-success">Approved</h4>
-                        <textarea id="approved" class="form-control bg-dark p-4" style="color: rgb(61, 213, 151)" rows="5" disabled></textarea>
-                        <button class="btn btn-sm btn-primary float-end mt-2" onclick="copy('approved')">Copy</button>
+                        <div class="p-3 text-success border" id="approved" style="background-color: #15161b;"></div>
+                        <button class="btn btn-sm btn-dark float-end mt-3" onclick="copy('approved')"><i class="mdi mdi-content-copy"></i></button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 grid-margin">
+            <div class="col-md-7 grid-margin">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-danger">Declined</h4>
-                        <textarea id="declined" class="form-control bg-dark p-4" style="color: rgb(252, 90, 90)" rows="5" disabled></textarea>
-                        <button class="btn btn-sm btn-primary float-end mt-2" onclick="copy('declined')">Copy</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 grid-margin">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title text-warning">Error</h4>
-                        <textarea id="error" class="form-control bg-dark p-4" style="color: rgb(255, 197, 66)" rows="5" disabled></textarea>
-                        <button class="btn btn-sm btn-primary float-end mt-2" onclick="copy('error')">Copy</button>
+                        <div class="p-3 text-danger border" id="declined" style="background-color: #15161b;"></div>
+                        <button class="btn btn-sm btn-dark float-end mt-3" onclick="copy('declined')"><i class="mdi mdi-content-copy"></i></button>
                     </div>
                 </div>
             </div>
@@ -71,6 +62,6 @@ Enter one card per line."></textarea>
     </div>
 </main>
 <script>
-    document.addEventListener('DOMContentLoaded',()=>{const s=document.getElementById('start'),t=document.getElementById('stop'),c=document.getElementById('cards'),a=document.getElementById('approved'),d=document.getElementById('declined'),e=document.getElementById('error'),u=()=>{s.disabled=!c.value.trim(),t.disabled=!0},h=()=>[a,d,e].forEach(x=>{const v=x.value.trim();x.style.display=v?"block":"none";const b=x.nextElementSibling;b&&b.tagName==="BUTTON"&&(b.style.display=v?"block":"none")});c.oninput=u;const copy=i=>{const t=document.createElement("textarea");t.value=document.getElementById(i).value,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)};s.onclick=async()=>{if(c.value.trim()){let l=c.value.trim().split("\n");s.disabled=!0,t.disabled=!1;for(let i=0;i<l.length;i++){if(t.disabled)break;const x=l[i];try{const r=await fetch("/api/v1/charge",{method:"POST",headers:{"Content-Type":"application/json","api-key":"<?php echo 'your-secret-api-key'; ?>"},body:JSON.stringify({data:x})}),v=await r.json();v.status==="ok"?a.value+=(a.value?"\n":"")+x:v.status==="nok"?d.value+=(d.value?"\n":"")+x:e.value+=(e.value?"\n":"")+x}catch{e.value+=(e.value?"\n":"")+x}h(),l.splice(i,1),c.value=l.join("\n"),i--}t.disabled=!0,u()}},t.onclick=()=>{t.disabled=!0,u()},window.copy=copy,u(),h();window.onbeforeunload=()=>{if(c.value.trim()||a.value.trim())return"Changes you made may not be saved."}});
+    document.addEventListener('DOMContentLoaded',()=>{const s=document.getElementById('start'),t=document.getElementById('stop'),c=document.getElementById('cards'),a=document.getElementById('approved'),d=document.getElementById('declined'),u=()=>{s.disabled=!c.value.trim(),t.disabled=!0},h=()=>[a,d].forEach(x=>{const v=x.innerHTML.trim();x.style.display=v?"block":"none";const b=x.nextElementSibling;b&&b.tagName==="BUTTON"&&(b.style.display=v?"block":"none")});c.oninput=u;const copy=i=>{const element=document.getElementById(i);const t=document.createElement("textarea");t.value=element.tagName==="DIV"?element.innerText:element.value,document.body.appendChild(t),t.select(),document.execCommand("copy"),document.body.removeChild(t)};s.onclick=async()=>{if(c.value.trim()){let l=c.value.trim().split("\n");s.disabled=!0,t.disabled=!1;for(let i=0;i<l.length;i++){if(t.disabled)break;try{const r=await fetch("/api/v1/charge",{method:"POST",headers:{"Content-Type":"application/json","api-key":"<?php echo 'your-secret-api-key'; ?>"},body:JSON.stringify({data:l[i]})}),v=await r.json();if(v.status==="ok"){a.innerText+=(a.innerText?"\n":"")+`${v.card} - ${v.message}`}else if(v.status==="nok"){d.innerHTML+=`<div style="color: rgb(252, 90, 90)">${v.card} - ${v.message}</div>`}else if(v.status==="error"){d.innerHTML+=`<div style="color: rgb(255, 193, 7)">${v.card} - ${v.message}</div>`}}catch{d.innerHTML+=`<div style="color: rgb(255, 90, 90)">Error occurred</div>`}h(),l.splice(i,1),c.value=l.join("\n"),i--}t.disabled=!0,u()}},t.onclick=()=>{t.disabled=!0,u()},window.copy=copy,u(),h();window.onbeforeunload=()=>{if(c.value.trim()||a.innerText.trim())return"Changes you made may not be saved."}});
 </script>
 <?php include "views/partials/footer.php"; ?>
