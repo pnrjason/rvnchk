@@ -10,7 +10,7 @@
                         <div class="col-md-12">
                             <div class="card-body">
                                 <h4 class="card-title text-primary">Charge</h4>
-                                <p>Initiates a charge on the card by deducting a small amount from the cardholder's account.</p>
+                                <p>Initiates a charge on the card by deducting a small amount from the cardholder's account. Supported cards: VISA, MASTERCARD, AMERICAN EXPRESS, DISCOVER, JCB, and UNION PAY.</p>
                                 <p>Costs<code>1 credit</code>/ Maximum of<code>300 cards</code>per check.</p>
                                 <textarea id="cards" class="form-control bg-dark p-4" rows="15" placeholder="Format: XXXXXXXXXXXXXXXX|XX|XXXX|XXX
 
